@@ -67,89 +67,38 @@
 											</div>
 
 											<div class="form-group">
-												<label for="userName">User Name:</label> <input
-														type="text" class="form-control" id="userName"
-														name="userName" th:value="${user.userName}" />
+												<label for="userName">User Name:</label> <input type="text"
+													class="form-control" id="userName" name="userName"
+													th:value="${user.userName}" />
 											</div>
-											
+
 											<div class="form-group">
 												<label for="currentPassword">Current Password:</label> <input
-														type="text" class="form-control" id="currentPassword"
-														name="currentPassword" th:value="${currentPassword}" />
+													type="text" class="form-control" id="currentPassword"
+													name="currentPassword" th:value="${currentPassword}" />
 											</div>
-											<p style="color:#828282">Enter your current password to change your email or password.</p>
-											
+											<p style="color: #828282">Enter your current password to
+												change your email or password.</p>
+
 											<div class="form-group">
-												<label for="email">*Email:</label> <input
-														type="text" class="form-control" id="email"
-														name="email" th:value="${user.email}" />
+												<label for="email">*Email:</label> <input type="text"
+													class="form-control" id="email" name="email"
+													th:value="${user.email}" />
 											</div>
-											
+
 											<div class="form-group">
 												<label for="newPassword">Password:</label> <input
-														type="password" class="form-control" id="newPassword"
-														name="newPassword" />
+													type="password" class="form-control" id="newPassword"
+													name="newPassword" />
 											</div>
-											
+
 											<div class="form-group">
 												<label for="confirmPassword">Confirm Password:</label> <input
-														type="password" class="form-control" id="confirmPassword"
-														/>
+													type="password" class="form-control" id="confirmPassword" />
 											</div>
-											
-											<button type="submit" class="btn tbn-primary">Create new account</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<!-- login panel -->
-					<div class="tab-pane fade" id="tab-2"
-						th:classappend="${classActiveLogin}? 'in active'">
-						<div class="panel-group">
-							<div class="panel panel-default" style="border: none;">
-								<div class="panel-body"
-									style="background-color: #ededed; margin-topp: 20px;">
-									<form>
-										<div class="form-group">
-											<label for="username">Username:</label> <input
-												required="required" type="text" class="form-control"
-												id="username" name="username" />
-											<p style="color: #828282">Enter your username</p>
-										</div>
-
-										<div class="form-group">
-											<label for="password">Password:</label> <input
-												required="required" type="password" class="form-control"
-												id="password" name="passowrd" />
-											<p style="color: #828282">Enter your password</p>
-										</div>
-
-										<button type="submit" class="btn btn-primary">Sign In</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- forget password -->
-					<div class="tab-pane fade" id="tab-3"
-						th:classappend="${classActiveForgetPassword}? 'in active'">
-						<div class="panel-group">
-							<div class="panel panel-default" style="border: none;">
-								<div class="panel-body"
-									style="background-color: #ededed; margin-topp: 20px;">
-									<form>
-										<div class="form-group">
-											<label for="recoverEmail">Email:</label> <input
-												required="required" type="text" class="form-control"
-												id="recoverEmail" name="email" />
-											<p style="color: #828282">Enter your registered email
-												address here</p>
-										</div>
-
-										<button type="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" class="btn tbn-primary">Create
+												new account</button>
 									</form>
 								</div>
 							</div>

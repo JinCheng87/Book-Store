@@ -21,7 +21,7 @@ import com.bookstore.service.impl.UserSecurityService;
 public class HomeController {
 	
 	@Autowired
-	private UserService  userService;
+	private UserService userService;
 	
 	@Autowired
 	private UserSecurityService userSecurityService;
