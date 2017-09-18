@@ -21,29 +21,30 @@ import com.bookstore.domain.security.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class User implements UserDetails {
+public class User implements UserDetails{
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id", nullable = false, updatable = false)
-	private long id;
+	private Long id;
 	private String username;
-	private String passowrd;
+	private String password;
 	private String firstName;
 	private String lastName;
 	
 	@Column(name="email", nullable = false, updatable = false)
 	private String email;
 	private String phone;
-	private boolean enable = true;
+	private boolean enabled=true;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<UserRole> userRoles = new HashSet<>();
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -52,11 +53,11 @@ public class User implements UserDetails {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPassowrd() {
-		return passowrd;
+	public String getPassword() {
+		return password;
 	}
-	public void setPassowrd(String passowrd) {
-		this.passowrd = passowrd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -82,11 +83,9 @@ public class User implements UserDetails {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public boolean isEnable() {
-		return enable;
-	}
-	public void setEnable(boolean enable) {
-		this.enable = enable;
+	
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	public Set<UserRole> getUserRoles() {
 		return userRoles;
@@ -98,12 +97,8 @@ public class User implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> authorites = new HashSet<>();
 		userRoles.forEach(ur -> authorites.add(new Authority(ur.getRole().getName())));
+		
 		return authorites;
-	}
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	@Override
 	public boolean isAccountNonExpired() {
@@ -120,10 +115,10 @@ public class User implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+		return enabled;
 	}
 	
 	
