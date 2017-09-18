@@ -12,11 +12,12 @@ import javax.persistence.Table;
 import com.bookstore.domain.User;
 
 @Entity
-@Table(name="user-role")
+@Table(name="user_role")
 public class UserRole {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long userRoleId;
+	private Long userRoleId;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id")
@@ -26,30 +27,37 @@ public class UserRole {
 	@JoinColumn(name="role_id")
 	private Role role;
 	
+	
 	public UserRole(User user, Role role) {
 		this.user = user;
-		this.role = role;	
+		this.role = role;
 	}
 
-	public long getUserRoleId() {
+
+	public Long getUserRoleId() {
 		return userRoleId;
 	}
 
-	public void setUserRoleId(long userRoleId) {
+
+	public void setUserRoleId(Long userRoleId) {
 		this.userRoleId = userRoleId;
 	}
+
 
 	public User getUser() {
 		return user;
 	}
 
+
 	public void setUser(User user) {
 		this.user = user;
 	}
 
+
 	public Role getRole() {
 		return role;
 	}
+
 
 	public void setRole(Role role) {
 		this.role = role;
