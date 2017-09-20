@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/js/**",
 			"/image/**",
 			"/",
-			"/myUser",
+			"/newUser",
 			"/forgetPassword"
 	};
 	
