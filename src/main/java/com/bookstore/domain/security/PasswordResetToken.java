@@ -3,6 +3,7 @@ package com.bookstore.domain.security;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import com.bookstore.domain.User;
-
+@Entity
 public class PasswordResetToken {
 	private static final int  EXPIRATION = 60 * 24;
 	
@@ -26,6 +27,8 @@ public class PasswordResetToken {
 	private User user;
 	
 	private Date expiryDate;
+	
+	public PasswordResetToken() {}
 	
 	public PasswordResetToken(final String token, final User user) {
 		super();

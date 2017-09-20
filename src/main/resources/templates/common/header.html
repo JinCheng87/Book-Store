@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="common-header">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -57,8 +57,9 @@
 					<ul class="nav navbar-nav navbar-right">
 
 						<li><a href="#">My Cart</a></li>
-						<li><a th:href="@{/login}">My Account</a></li>
-						<li><a href="#">Logout</a></li>
+						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">My Account</a></li>
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">My Account</a></li>
+						<li><a sec:authorize="isAuthenticated()" href="@{/logout}">Logout</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
