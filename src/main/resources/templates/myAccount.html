@@ -51,7 +51,7 @@
 										information.</div>
 									<form th:action="@{/newUser}" method="post">
 										<div class="form-group">
-											<label for="newUsername">* Username: </label>&hbsp; <span
+											<label for="newUsername">* Username: </label>&nbsp; <span
 												style="color: red" th:if="${usernameExists}">User
 												name already exists.</span><input required="required" type="text"
 												class="form-control" id="newUsername" name="username" />
@@ -59,7 +59,7 @@
 										</div>
 
 										<div class="form-group">
-											<label for="email">* Email Address: </label>&hbsp; <span
+											<label for="email">* Email Address: </label>&nbsp; <span
 												style="color: red" th:if="${emailExists}">Email
 												alreay exists.</span> <input required="required" type="text"
 												class="form-control" id="email" name="email" />
