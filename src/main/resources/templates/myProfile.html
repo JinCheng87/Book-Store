@@ -48,7 +48,7 @@
 									style="background-color: #ededed; margin-top: 20px;">
 									<form th:action="@{/updateUserInfo}" method="post">
 
-										<input type="hidden" name="id" th:value="${user.id}"/>
+										<input type="hidden" name="id" th:value="${user.id}" />
 										<div class="bg-info" th:if="${updateUserInfo}">User info
 											updated</div>
 
@@ -65,40 +65,40 @@
 														th:value="${user.lastName}" />
 												</div>
 											</div>
+										</div>
+										<div class="form-group">
+											<label for="username">User Name:</label> <input type="text"
+												class="form-control" id="username" name="username"
+												th:value="${user.username}" />
+										</div>
 
-											<div class="form-group">
-												<label for="username">User Name:</label> <input type="text"
-													class="form-control" id="username" name="username"
-													th:value="${user.username}" />
-											</div>
+										<div class="form-group">
+											<label for="currentPassword">Current Password:</label> <input
+												type="text" class="form-control" id="currentPassword"
+												name="currentPassword" th:value="${currentPassword}" />
+										</div>
+										<p style="color: #828282">Enter your current password to
+											change your email or password.</p>
 
-											<div class="form-group">
-												<label for="currentPassword">Current Password:</label> <input
-													type="text" class="form-control" id="currentPassword"
-													name="currentPassword" th:value="${currentPassword}" />
-											</div>
-											<p style="color: #828282">Enter your current password to
-												change your email or password.</p>
+										<div class="form-group">
+											<label for="email">*Email:</label> <input type="text"
+												class="form-control" id="email" name="email"
+												th:value="${user.email}" />
+										</div>
 
-											<div class="form-group">
-												<label for="email">*Email:</label> <input type="text"
-													class="form-control" id="email" name="email"
-													th:value="${user.email}" />
-											</div>
+										<div class="form-group">
+											<label for="newPassword">Password:</label> <input
+												type="password" class="form-control" id="newPassword"
+												name="newPassword" />
+										</div>
 
-											<div class="form-group">
-												<label for="newPassword">Password:</label> <input
-													type="password" class="form-control" id="newPassword"
-													name="newPassword" />
-											</div>
+										<div class="form-group">
+											<label for="confirmPassword">Confirm Password:</label> <input
+												type="password" class="form-control" id="confirmPassword" />
+										</div>
 
-											<div class="form-group">
-												<label for="confirmPassword">Confirm Password:</label> <input
-													type="password" class="form-control" id="confirmPassword" />
-											</div>
-
-											<button type="submit" class="btn tbn-primary">Create
-												new account</button>
+										<button type="submit" class="btn btn-primary">Create
+											new account</button>
 									</form>
 								</div>
 							</div>
