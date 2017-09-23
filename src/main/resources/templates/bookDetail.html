@@ -23,13 +23,13 @@
 		<img src="/image/wood.png" class="img-responsive"
 			style="margin-top: -75px;" />
 
-		<form th:action="@{/shoppingCart/addItem" method="post">
+		<form th:action="@{/shoppingCart/addItem}" method="post">
 			<input hidden="hidden" th:field="*{book.id}" />
 			<div class="row" style="margin-top: 120px;">
 				<div class="col-xs-3">
 					<a th:href="@{/bookshelf}">Back to book list</a><br /> <img
 						class="img-responsive shelf-book"
-						th:src="#{adminPath}+@{/image/book/}=${book.id}+'.png'" />
+						th:src="#{adminPath}+@{/image/book/}+${book.id}+'.png'" />
 				</div>
 
 				<div class="col-xs-9">
@@ -61,7 +61,7 @@
 							</p>
 							<p>
 								<strong>Shipping Weight</strong><span
-									th:text="{book.shoppingWeight}"></span>
+									th:text="${book.shippingWeight}"></span>
 							</p>
 						</div>
 
@@ -77,11 +77,11 @@
 											</h4>
 											<p>
 												List Price: <span style="text-decoration: line-through">$<span
-													th:text="${boo.listPrice}"></span></span>
+													th:text="${book.listPrice}"></span></span>
 											</p>
 											<p>
 												You save: $<span
-													th:text="${#numbers.formatDecimal((book.listPrice - book.ourPrice), 0, 'COMMA', 2, 'POINT')"></span>
+													th:text="${#numbers.formatDecimal((book.listPrice - book.ourPrice), 0, 'COMMA', 2, 'POINT')}"></span>
 											</p>
 											<span>Qty: </span> <select name="qty">
 												<option th:each="qty : ${qtyList}" th:value="${qty}"
@@ -89,14 +89,14 @@
 											</select>
 										</div>
 										<div class="col-xs-6">
-											<h4 th:if="*{book.instockNumber&gt;10" style="color: green;">In
+											<h4 th:if="*{book.inStockNumber&gt;10}" style="color: green;">In
 												Stock</h4>
 											<h4
-												th:if="*{book.instockNumber&lt;10 and book.inStockNumber&gt;0"
+												th:if="*{book.inStockNumber&lt;10 and book.inStockNumber&gt;0}"
 												style="color: green;">
-												Only <span th:text="${book.inStockNumber"> In Stock</span>
+												Only <span th:text="${book.inStockNumber}"> In Stock</span>
 											</h4>
-											<h4 th:if="*{book.instockNumber==10" style="color: darkred;">Out
+											<h4 th:if="*{book.inStockNumber==10}" style="color: darkred;">Out
 												Of Stock</h4>
 											<button type="submit" class="btn btn-warning"
 												style="color: black; border: 1px solid black; padding: 10px 40px 10px 40px;">Add
