@@ -17,7 +17,6 @@ public class UserShipping {
 	private String userShippingStreet2;
 	private String userShippingCity;
 	private String userShippingState;
-	private String userShippingCountry;
 	private String userShippingZipcode;
 
 	@ManyToOne
@@ -70,14 +69,6 @@ public class UserShipping {
 
 	public void setUserShippingState(String userShippingState) {
 		this.userShippingState = userShippingState;
-	}
-
-	public String getUserShippingCountry() {
-		return userShippingCountry;
-	}
-
-	public void setUserShippingCountry(String userShippingCountry) {
-		this.userShippingCountry = userShippingCountry;
 	}
 
 	public String getUserShippingZipcode() {

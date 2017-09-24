@@ -150,9 +150,9 @@
 															th:checked="${userPayment.defaultPayment}" /></td>
 														<td th:text="${userPayment.cardName}"></td>
 														<td><a
-															th:href="@{/updateCareditCard(id=${userPayment.id})"><i
+															th:href="@{/updateCreditCard(id=${userPayment.id})}"><i
 																class="fa fa-pencil"></i></a> <a
-															th:href="@{/removeCareditCard(id=${userPayment.id})"><i
+															th:href="@{/removeCreditCard(id=${userPayment.id})}"><i
 																class="fa fa-times"></i></a></td>
 													</tr>
 												</tbody>
@@ -243,19 +243,13 @@
 													<img src="/image/creditcard.png" class="img-responsive" /><br />
 													<div class="form-group">
 														<label for="cardType">* Select Card Type:</label> <select
-															class="form-controll" id="cardType" th:name="type"
+															class="form-control" id="cardType" th:name="type"
 															th:value="${userPayment.type}">
 															<option value="visa">Visa</option>
 															<option value="mastercard">Mastercard</option>
 															<option value="discover">Discover</option>
 															<option value="amex">American Express</option>
 														</select>
-													</div>
-													<div class="form-group">
-														<label for="cardHolder">* Card Holder Name:</label> <input
-															type="text" class="form-control" id="cardHolder"
-															placeHolder="Name" th:name="holderName"
-															required="required" th:value="${userPayment.holderName}" />
 													</div>
 													<div class="form-group">
 														<label for="cardHolder">* Card Holder Name:</label> <input
