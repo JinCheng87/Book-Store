@@ -342,8 +342,8 @@
 												of Shipping Addresses</a></li>
 
 										<li class="breadcrumb-item active"><a
-											th:href="@{/addNewCreditCard}"
-											th:style="${addNewCreditCard}? 'color:red'">Add(Update)
+											th:href="@{/addNewShippingAddress}"
+											th:style="${addNewShippingAddress}? 'color:red'">Add(Update)
 												Shipping Address</a></li>
 									</ol>
 									<div th:if="${listOfShippingAddresses}">
@@ -367,7 +367,8 @@
 														<td><a
 															th:href="@{/updateUserShipping(id=${userShipping.id})}"><i
 																class="fa fa-pencil"></i></a><span>&nbsp;&nbsp;&nbsp;
-														</span> <a th:href="@{/removeUserShipping(id=${userShipping.id})}"><i
+														</span> <a
+															th:href="@{/removeUserShipping(id=${userShipping.id})}"><i
 																class="fa fa-times"></i></a></td>
 													</tr>
 												</tbody>
@@ -380,8 +381,8 @@
 										<form th:action="@{addNewShippingAddress}" method="post">
 											<div class="bg-info" th:if="${updateUserShippingInfo}">UserInfo
 												Updated</div>
-											<input hidden="hidden" name="id" th:value="${userShipping.id}" />
-
+											<input hidden="hidden" name="id"
+												th:value="${userShipping.id}" />
 
 											<!-- Shipping address -->
 											<hr />
@@ -398,24 +399,26 @@
 											<div class="form-group">
 												<label for="shippingAddress">* Street Address 1</label> <input
 													type="text" class="form-control" id="shippingAddress"
-													placeHolder="Street Address 1" th:name="userShippingStreet1"
-													required="required"
+													placeHolder="Street Address 1"
+													th:name="userShippingStreet1" required="required"
 													th:value="${userShipping.userShippingStreet1}" />
 											</div>
 
 											<div class="form-group">
 												<label for="shippingAddress2">Street Address 2</label> <input
 													type="text" class="form-control" id="shippingAddress2"
-													placeHolder="Street Address 2" th:name="userShippingStreet2"
+													placeHolder="Street Address 2"
+													th:name="userShippingStreet2"
 													th:value="${userShipping.userShippingStreet2}" />
 											</div>
 
 											<div class="row">
 												<div class="col-xs-4">
 													<div class="form-group">
-														<label for="shippingCity">* city</label> <input type="text"
-															class="form-control" id="shippingCity" placeHolder="City"
-															th:name="userShippingCity" required="required"
+														<label for="shippingCity">* city</label> <input
+															type="text" class="form-control" id="shippingCity"
+															placeHolder="City" th:name="userShippingCity"
+															required="required"
 															th:value="${userShipping.userShippingCity}" />
 													</div>
 												</div>
@@ -441,18 +444,20 @@
 															th:value="${userShipping.userShippingZipcode}" />
 													</div>
 												</div>
+												<button type="submit" class="btn btn-primary">Save</button>
 											</div>
-											</form>
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</div>
+
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<div th:replace="common/header :: body-bottom-scripts" />
+	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
 </html>
