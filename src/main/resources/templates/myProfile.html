@@ -151,7 +151,7 @@
 														<td th:text="${userPayment.cardName}"></td>
 														<td><a
 															th:href="@{/updateCreditCard(id=${userPayment.id})}"><i
-																class="fa fa-pencil"></i></a> <a
+																class="fa fa-pencil"></i></a><span>&nbsp;&nbsp;&nbsp;   </span> <a
 															th:href="@{/removeCreditCard(id=${userPayment.id})}"><i
 																class="fa fa-times"></i></a></td>
 													</tr>
@@ -224,9 +224,9 @@
 												</div>
 												<div class="col-xs-4">
 													<div class="form-group">
-														<label for="billingZipcode">* city</label> <input
+														<label for="billingZipcode">* Zipcode</label> <input
 															type="text" class="form-control" id="billingZipcode"
-															placeHolder="Zipcode" th:name="billingZipcode"
+															placeHolder="Zipcode" th:name="userBillingZipcode"
 															required="required"
 															th:value="${userBilling.userBillingZipcode}" />
 													</div>
