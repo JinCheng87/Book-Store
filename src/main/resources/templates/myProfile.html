@@ -8,7 +8,7 @@
 		<div class="row" style="margin-bottom: -100px;">
 			<div class="col-xs-8">
 				<h2 class="section-headline">
-					<span th:text="${#strings.toUpperCase(user.username)}">User
+					<span th:text="${#strings.toUpperCase(user.getUsername())}">User
 						Account</span>
 				</h2>
 			</div>
@@ -122,7 +122,7 @@
 											</li>
 										</ol>
 									<div th:if="${listOfCreditCards}">
-										<form th:action="@{/setDefaultPayment" method="post">
+										<form th:action="@{/setDefaultPayment}" method="post">
 											<table class="table">
 												<thead>
 													<tr>
