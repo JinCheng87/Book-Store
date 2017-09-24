@@ -6,4 +6,5 @@ import com.bookstore.domain.UserPayment;
 
 public interface UserPaymentRepository extends CrudRepository<UserPayment, Long>{
 	UserPayment findById(Long id);
+	void removeById(Long id);
 }

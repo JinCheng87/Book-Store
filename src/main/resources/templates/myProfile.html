@@ -109,9 +109,7 @@
 					<div class="tab-pane fade" id="tab-2"
 						th:classappend="${classActiveOrder}? 'in active'">
 						<div class="panel-group">
-							<div class="panel panel-default" style="border: none;">
-								
-							</div>
+							<div class="panel panel-default" style="border: none;"></div>
 						</div>
 					</div>
 
@@ -151,8 +149,8 @@
 														<td th:text="${userPayment.cardName}"></td>
 														<td><a
 															th:href="@{/updateCreditCard(id=${userPayment.id})}"><i
-																class="fa fa-pencil"></i></a><span>&nbsp;&nbsp;&nbsp;   </span> <a
-															th:href="@{/removeCreditCard(id=${userPayment.id})}"><i
+																class="fa fa-pencil"></i></a><span>&nbsp;&nbsp;&nbsp;
+														</span> <a th:href="@{/removeCreditCard(id=${userPayment.id})}"><i
 																class="fa fa-times"></i></a></td>
 													</tr>
 												</tbody>
@@ -187,18 +185,17 @@
 											</div>
 
 											<div class="form-group">
-												<label for="billingAddress">* Street Address</label> <input
+												<label for="billingAddress">* Street Address 1</label> <input
 													type="text" class="form-control" id="billingAddress"
-													placeHolder="Street Address 1"
-													th:name="userBillingStreet1" required="required"
+													placeHolder="Street Address 1" th:name="userBillingStreet1"
+													required="required"
 													th:value="${userBilling.userBillingStreet1}" />
 											</div>
 
 											<div class="form-group">
-												<label for="billingAddress2">* Street Address</label> <input
+												<label for="billingAddress2">Street Address</label> <input
 													type="text" class="form-control" id="billingAddress2"
-													placeHolder="Street Address 2"
-													th:name="userBillingStreet2" required="required"
+													placeHolder="Street Address 2" th:name="userBillingStreet2"
 													th:value="${userBilling.userBillingStreet2}" />
 											</div>
 
@@ -209,12 +206,14 @@
 															class="form-control" id="billingCity" placeHolder="City"
 															th:name="userBillingCity" required="required"
 															th:value="${userBilling.userBillingCity}" />
-											 		</div>
+													</div>
 												</div>
 												<div class="col-xs-4">
 													<div class="form-group">
 														<label for="billingState">* State</label> <select
-															id="billingState" class="form-control" th:name="userBillingState" value="${userBilling.userBillingState}"
+															id="billingState" class="form-control"
+															th:name="userBillingState"
+															value="${userBilling.userBillingState}"
 															required="required">
 															<option value="" disabled="disabled">select a state</option>
 															<option th:each="state : ${stateList}" th:text="${state}"
@@ -314,14 +313,14 @@
 													<div class="form-group">
 														<label for="cardCVC">CV Code</label> <input id="cardCVC"
 															type="tel" class="form-control" th:name="cvc"
-															placeHolder="CVC" th:value="${userPayment.cvc}"/>
+															placeHolder="CVC" th:value="${userPayment.cvc}" />
 													</div>
 												</div>
 											</div>
 											<hr />
 											<button type="submit" class="btn btn-primary btn-lg">Save</button>
 										</form>
-										
+
 									</div>
 								</div>
 							</div>
