@@ -17,6 +17,7 @@ public class UserPayment {
 	private Long id;
 	private String type;
 	private String cardName;
+	private String cardNumber;
 	private int expiryMonth;
 	private int expiryYear;
 	private int cvc;
@@ -52,6 +53,14 @@ public class UserPayment {
 
 	public void setCardName(String cardName) {
 		this.cardName = cardName;
+	}
+	
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 
 	public int getExpiryMonth() {

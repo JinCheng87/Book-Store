@@ -133,10 +133,13 @@ public class HomeController {
 		
 		UserBilling userBilling = new UserBilling();
 		UserPayment userPayment = new UserPayment();
+		model.addAttribute("userBilling", userBilling);
+		model.addAttribute("userPayment", userPayment);
 		
 		List<String> stateList = USConstants.listOfUSStatesCode;
 		Collections.sort(stateList);
 		model.addAttribute("stateList", stateList);
+		
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		
