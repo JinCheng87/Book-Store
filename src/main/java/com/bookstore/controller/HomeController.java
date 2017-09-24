@@ -2,6 +2,7 @@ package com.bookstore.controller;
 
 import java.security.Principal;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -35,6 +36,7 @@ import com.bookstore.service.UserService;
 import com.bookstore.service.impl.UserSecurityService;
 import com.bookstore.utility.MailConstructor;
 import com.bookstore.utility.SecurityUtility;
+import com.bookstore.utility.USConstants;
 
 @Controller
 public class HomeController {
@@ -67,13 +69,14 @@ public class HomeController {
 //		model.addAttribute("userShippingList", user.getUserShippingList());
 //		model.addAttribute("orderList", user.getOrderList());
 		
-		UserShipping userShipping = new UserShipping();
-		model.addAttribute("userShipping", userShipping);
+//		UserShipping userShipping = new UserShipping();
+//		model.addAttribute("userShipping", userShipping);
+		
 		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("listOfShippingAddresses", true);
 		
 		List<String> stateList = USConstants.listOfUSStatesCode;
-		Collection.sort(stateList);
+		Collections.sort(stateList);
 		model.addAttribute("stateList", stateList);
 		model.addAttribute("classActiveEdit", true);
 		
