@@ -62,7 +62,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 
-						<li><a href="#">My Cart</a></li>
+						<li><a th:href="@{/shoppingCart/cart}">My Cart</a></li>
 						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">My
 								Account</a></li>
 						<li><a sec:authorize="isAuthenticated()"
