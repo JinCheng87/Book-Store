@@ -34,24 +34,23 @@
 						<a class="btn btn-primary"
 							th:href="@{/checkout(id=${shoppingCart.id})}">Check Out</a>
 					</div>
-				
-				<br />
-				<div th:if="${notEnoughStock}" class="alert alert-warning">
-					Some of products don't have enough stock.</div>
-				<div th:if="${emptyCart}" class="alert alert-warning">Your
-					cart is empty currently.</div>
-					<br/>
-					<br/>
-				<div class="row">
-					<div class="col-xs-8">
-						<h4>Product</h4>
-					</div>
-					<div class="col-xs-2">
-						<h4>Price</h4>
-					</div>
-					<div class="col-xs-2">
-						<h4>Qty</h4>
-					</div>
+
+					<br />
+					<div th:if="${notEnoughStock}" class="alert alert-warning">
+						Some of products don't have enough stock.</div>
+					<div th:if="${emptyCart}" class="alert alert-warning">Your
+						cart is empty currently.</div>
+					<br /> <br />
+					<div class="row">
+						<div class="col-xs-8">
+							<h4>Product</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4>Price</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4>Qty</h4>
+						</div>
 					</div>
 
 					<!-- display products in cart -->
@@ -63,16 +62,22 @@
 									class="img-responsive shelf-book"
 									th:src="#{adminPath}+@{/img/book/}+${cartItem.book.id}+'.png'" />
 								</a>
-								<p th:if="${cartItem.book.inStockNumber&gt;10}"
-									style="color: green;">In Stock</p>
-								<p
-									th:if="${cartItem.book.inStockNumber&lt;10 and cartItem.book.inStockNumber&gt;0}"
-									style="color: red;">
-									Only<span th:text="${cartItem.book.inStockNumber}"></span>In
-									Stock
-								</p>
-								<p th:if="${cartItem.book.inStockNumber==0}"
-									style="color: darkred;">Out Of Stock</p>
+							</div>
+							<div class="col-xs-6">
+								<span class="center-block">
+								<a th:href="@{/bookDetail?id=}+${cartItem.book.id}"><h4 th:text="${cartItem.book.title}"></h4></a>
+									<p th:if="${cartItem.book.inStockNumber&gt;10}"
+										style="color: green;">In Stock</p>
+									<p
+										th:if="${cartItem.book.inStockNumber&lt;10 and cartItem.book.inStockNumber&gt;0}"
+										style="color: red;">
+										Only <span th:text="${cartItem.book.inStockNumber}"></span> In
+										Stock
+									</p>
+									<p th:if="${cartItem.book.inStockNumber==0}"
+										style="color: darkred;">Out Of Stock</p>
+										<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}">delete</a>
+								</span>
 							</div>
 							<div class="col-xs-2">
 								<h5 style="color: #db3208; font-size: large;">

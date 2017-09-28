@@ -33,6 +33,8 @@
 				</div>
 
 				<div class="col-xs-9">
+				<h3 th:if="${addBookSuccess}" style="color:forestgreen;"><span><i class="fa fa-check" aria-hidden="true" style="color: forestgreen"></i>Added to cart.</span></h3>
+				<h3 th:if="${notEnoughStock}" style="color:red;">Only <span th:text="${book.inStockNumber}"></span>In Stock Currently</h3>
 					<h3 th:text="${book.title}">Book Title</h3>
 					<div class="row">
 						<div class="col-xs-5">
@@ -94,7 +96,7 @@
 											<h4
 												th:if="*{book.inStockNumber&lt;10 and book.inStockNumber&gt;0}"
 												style="color: green;">
-												Only <span th:text="${book.inStockNumber}"> In Stock</span>
+												Only <span th:text="${book.inStockNumber}"> </span> In Stock
 											</h4>
 											<h4 th:if="*{book.inStockNumber==10}" style="color: darkred;">Out
 												Of Stock</h4>
