@@ -23,8 +23,8 @@
 
 		<div class="row" style="margin-top: 10px;">
 			<form th:action="@{/checkout}" method="post">
-			
-			<!-------- left panel -------------->
+
+				<!-------- left panel -------------->
 				<div class="col-xs-4">
 					<div class="panel panel-defualt">
 						<div class="panel-body">
@@ -59,9 +59,97 @@
 				</div>
 				<!----------checkout info panel --------->
 				<div class="col-xs-8">
-					
+					<div th:if=${missingRequiredField>
+						<h5 class="alert alert-warning">There are some fields
+							missing. Field with * is required.</h5>
+					</div>
+					<div class="panel-group" id="accordion">
+
+						<!-- Shipping Address -->
+						<div class="panel panel-default">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#shippingInfo"> 2. Shipping Address </a>
+							</h4>
+						</div>
+						<div id="shippingInfo" class="panel-collapse collapse"
+							th:classappend="${classActiveShipping}? 'in'">
+							<div class="panel-body">
+								<table class="table" th:if="${not emptyShippingList">
+									<thead>
+										<tr>
+											<th>Available Shipping Address
+										</tr>
+										<th>Operations</th>
+									</thead>
+									<tbody>
+										<tr th:each="userShipping : ${userShippingList}">
+											<td
+												th:text="${userShipping.userShippingStreet1}+' '+${userShipping.userShippingstreet2}+', '+${userShipping.usershipping.city}+', '+${userShipping.userShippingState}"></td>
+											<td><a
+												th:href="${/setShippingAddress(userShippingId=${userShipping.id})}">user
+													this address</a></td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="form-group">
+									<label for="shippingName">* Name</label> <input type="text"
+										class="form-control" id="shippingName" palceholder="Name"
+										name="shippingAddressName"
+										th:value="${shippingAddress.shippingAddressName}">
+								</div>
+
+								<div class="form-group">
+									<label for="shippingStreet">* Street 1</label> <input
+										type="text" class="form-control" id="shippingStreet"
+										palceholder="Street 1" name="shippingAddressStreet1"
+										th:value="${shippingAddress.shippingAddressStreet1}">
+								</div>
+
+								<div class="form-group">
+									<input type="text" class="form-control" palceholder="Street 2"
+										name="shippingAddressStreet2"
+										th:value="${shippingAddress.shippingAddressStreet2}">
+								</div>
+
+								<div class="row">
+									<div class="col-xs-4">
+										<div class="form-group">
+											<label for="shippingAddressCity">* city</label> <input type="text"
+												class="form-control" id="shippingAddressCity" placeHolder="City"
+												th:name="ShippingAddressCity" required="required"
+												th:value="${shippingAddress.shippingAddressCity}" />
+										</div>
+									</div>
+									<div class="col-xs-4">
+										<div class="form-group">
+											<label for="shippingAddressState">* State</label> <select
+												id="shippingAddressState" class="form-control"
+												th:name="shippingAddressState"
+												value="${shippingAddress.shippingAddressState}"
+												required="required">
+												<option value="" disabled="disabled">select a state</option>
+												<option th:each="state : ${stateList}" th:text="${state}"
+													th:selected="(${shippingAddress.shippingAddressState}==${state})"></option>
+											</select>
+										</div>
+									</div>
+									<div class="col-xs-4">
+										<div class="form-group">
+											<label for="shippingAddressZipcode">* Zipcode</label> <input
+												type="text" class="form-control" id="shippingAddressZipcode"
+												placeHolder="Zipcode" th:name="shippingAddressZipcode"
+												required="required"
+												th:value="${shippingAddress.shippingAddressZipcode}" />
+										</div>
+									</div>
+								</div>
+								<a data-toggele="collapse" data-parent="#accordion" class="btn tbn-warning pull-right" href="#paymentInfo">Next</a>
+							</div>
+						</div>
+					</div>
 				</div>
-				
+
 			</form>
 		</div>
 	</div>
