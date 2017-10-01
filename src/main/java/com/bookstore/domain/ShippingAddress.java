@@ -31,7 +31,7 @@ public class ShippingAddress {
 		this.id = id;
 	}
 
-	public String getshippingAddressName() {
+	public String getShippingAddressName() {
 		return shippingAddressName;
 	}
 
