@@ -24,7 +24,7 @@
 		<div class="row" style="margin-top: 10px;">
 			<form th:action="@{/checkout}" method="post">
 
-				<!-------- left panel -------------->
+				<!-- ========left panel========= -->
 				<div class="col-xs-4">
 					<div class="panel panel-defualt">
 						<div class="panel-body">
@@ -35,9 +35,18 @@
 							<div class="row">
 								<div class="col-xs-7 text-left">Total before tax:</div>
 								<div class="col-xs-5 text-right">
-									$<span th:text="shoppingCart.grandTotal"></span>
+									$<span th:text="${shoppingCart.grandTotal}"></span>
 								</div>
 							</div>
+							
+							<div class="row">
+								<div class="col-xs-7 text-left">Estimated tax:</div>
+								<div class="col-xs-5 text-right">
+									$<span th:with="tax=${shoppingCart.grandTotal*0.06}"
+											th:text="${#numbers.formatDecimal(tax, 0, 2)}"></span>
+								</div>
+							</div>
+							
 							<div class="row">
 								<div class="col-xs-7 text-left">
 									<h3 style="color: darkred;">
@@ -47,7 +56,7 @@
 								<div class="col-xs-5 text-right">
 									<h3>
 										<strong style="color: darkred;">$<span
-											th:with="total=${shoppingCart.grandTotal+shoppingCart.grandTotal*0.06"
+											th:with="total=${shoppingCart.grandTotal+shoppingCart.grandTotal*0.06}"
 											th:text="${#numbers.formatDecimal(total, 0, 2)}"></span></strong>
 									</h3>
 								</div>
@@ -57,9 +66,9 @@
 						</div>
 					</div>
 				</div>
-				<!----------checkout info panel --------->
+				<!-- ============checkout info panel============ -->
 				<div class="col-xs-8">
-					<div th:if=${missingRequiredField>
+					<div th:if="${missingRequiredField}">
 						<h5 class="alert alert-warning">There are some fields
 							missing. Field with * is required.</h5>
 					</div>
@@ -67,49 +76,51 @@
 
 						<!-- Shipping Address -->
 						<div class="panel panel-default">
+						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion"
-									href="#shippingInfo"> 2. Shipping Address </a>
+									href="#shippingInfo"> 1. Shipping Address </a>
 							</h4>
 						</div>
 						<div id="shippingInfo" class="panel-collapse collapse"
 							th:classappend="${classActiveShipping}? 'in'">
-							<div class="panel-body">
-								<table class="table" th:if="${not emptyShippingList">
+							<div class="panel panel-body">
+								<table class="table" th:if="${not emptyShippingList}">
 									<thead>
 										<tr>
-											<th>Available Shipping Address
+											<th>Available Shipping Address</th>
+											<th>Operations</th>
 										</tr>
-										<th>Operations</th>
+										
 									</thead>
 									<tbody>
 										<tr th:each="userShipping : ${userShippingList}">
 											<td
-												th:text="${userShipping.userShippingStreet1}+' '+${userShipping.userShippingstreet2}+', '+${userShipping.usershipping.city}+', '+${userShipping.userShippingState}"></td>
+												th:text="${userShipping.userShippingStreet1}+' '+${userShipping.userShippingStreet2}+', '+${userShipping.userShippingCity}+', '+${userShipping.userShippingState}"></td>
 											<td><a
-												th:href="${/setShippingAddress(userShippingId=${userShipping.id})}">use
+												th:href="@{/setShippingAddress(userShippingId=${userShipping.id})}">use
 													this address</a></td>
 										</tr>
 									</tbody>
 								</table>
-								<div class="form-group">
+ 								<!-- <div class="form-group">
 									<label for="shippingName">* Name</label> <input type="text"
-										class="form-control" id="shippingName" palceholder="Name"
+										class="form-control" id="shippingName" placeholder="Name"
 										name="shippingAddressName"
-										th:value="${shippingAddress.shippingAddressName}">
-								</div>
+										th:value="${shippingAddress.shippingAddressName}" />
+								</div> -->
 
 								<div class="form-group">
-									<label for="shippingStreet">* Street 1</label> <input
+									<label for="shippingStreet">* Street</label> <input
 										type="text" class="form-control" id="shippingStreet"
-										palceholder="Street 1" name="shippingAddressStreet1"
-										th:value="${shippingAddress.shippingAddressStreet1}">
+										placeholder="Street 1" name="shippingAddressStreet1"
+										th:value="${shippingAddress.shippingAddressStreet1}" />
 								</div>
 
 								<div class="form-group">
-									<input type="text" class="form-control" palceholder="Street 2"
+									<input type="text" class="form-control" placeholder="Street 2"
 										name="shippingAddressStreet2"
-										th:value="${shippingAddress.shippingAddressStreet2}">
+										th:value="${shippingAddress.shippingAddressStreet2}" />
 								</div>
 
 								<div class="row">
@@ -117,7 +128,7 @@
 										<div class="form-group">
 											<label for="shippingAddressCity">* city</label> <input
 												type="text" class="form-control" id="shippingAddressCity"
-												placeHolder="City" th:name="ShippingAddressCity"
+												placeholder="City" th:name="ShippingAddressCity"
 												required="required"
 												th:value="${shippingAddress.shippingAddressCity}" />
 										</div>
@@ -126,8 +137,8 @@
 										<div class="form-group">
 											<label for="shippingAddressState">* State</label> <select
 												id="shippingAddressState" class="form-control"
-												th:name="shippingAddressState"
-												value="${shippingAddress.shippingAddressState}"
+												th:name="shippingAddressState" 
+												th:value="${shippingAddress.shippingAddressState}"
 												required="required">
 												<option value="" disabled="disabled">select a state</option>
 												<option th:each="state : ${stateList}" th:text="${state}"
@@ -145,12 +156,13 @@
 										</div>
 									</div>
 								</div>
-								<a data-toggele="collapse" data-parent="#accordion"
-									class="btn tbn-warning pull-right" href="#paymentInfo">Next</a>
+								<a data-toggle="collapse" data-parent="#accordion"
+									class="btn btn-warning pull-right" href="#paymentInfo">Next</a>
 							</div>
 						</div>
+						</div>
 					</div>
-					<!-- Payment Info -->
+					<!-- =========Payment Info============= -->
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
@@ -161,24 +173,25 @@
 						<div id="paymentInfo" class="panel-collapse collapse"
 							th:classappend="${classActivePayment}? 'in'">
 							<div class="panel-body">
-								<table class="table" th:if="${not emptyPaymentList">
+								<table class="table" th:if="${not emptyPaymentList}">
 									<thead>
 										<tr>
-											<th>Available Credit Card
+											<th>Available Credit Card</th>
+											<th>Operations</th>
 										</tr>
-										<th>Operations</th>
+										
 									</thead>
 									<tbody>
 										<tr th:each="userPayment : ${userPaymentList}">
 											<td th:text="${userPayment.cardName}"></td>
 											<td><a
-												th:href="${/setPaymentMethod(userPaymentId=${userPayment.id})}">use
+												th:href="@{/setPaymentMethod(userPaymentId=${userPayment.id})}">use
 													this payment</a></td>
 										</tr>
 									</tbody>
 								</table>
 
-								<!-- credit card information -->
+								<!-- ===========credit card information============ -->
 								<div class="row">
 									<div class="col-xs-12">
 										<img src="/image/creditcard.png" class="img-responsive" /><br />
@@ -259,7 +272,7 @@
 									</div>
 								</div>
 
-								<!-- Billing Address -->
+								<!-- ==============Billing Address============== -->
 
 								<div class="checkbox">
 									<label> <input id="theSameAsShippingAddress"
@@ -280,7 +293,7 @@
 										type="text" class="form-control" id="billingAddress"
 										placeHolder="Street Address 1" th:name="bllingAddressStreet1"
 										required="required"
-										th:value="${villingAddress.billingAddressStreet1}" />
+										th:value="${billingAddress.billingAddressStreet1}" />
 								</div>
 
 								<div class="form-group">
@@ -309,7 +322,7 @@
 												required="required">
 												<option value="" disabled="disabled">select a state</option>
 												<option th:each="state : ${stateList}" th:text="${state}"
-													th:selected="(${userBilling.userBillingState}==${state})"></option>
+													th:selected="(${billingAddress.billingAddressState}==${state})"></option>
 											</select>
 										</div>
 									</div>
@@ -329,8 +342,8 @@
 						</div>
 					</div>
 
-					<!-- Review items and shipping -->
-					<div class="panel panel-defualt">
+					<!-- ==============Review items and shipping=============== -->
+					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion"
@@ -396,7 +409,7 @@
 											</div>
 
 											<div class="col-xs-2">
-												<h5 style="font-size: large" th:text="${cartItem.qty"></h5>
+												<h5 style="font-size: large" th:text="${cartItem.qty}"></h5>
 											</div>
 									</div>
 
@@ -407,6 +420,9 @@
 										</strong><span style="color: #db3208; font-size: large;">$<span
 											th:text="${shoppingCart.grandTotal}"></span></span>
 									</h4>
+									<br />
+									<br />
+									<button type="submit" class="btn btn-block btn-warning"> Place your order</button>
 								</div>
 							</div>
 						</div>
