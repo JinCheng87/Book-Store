@@ -1,7 +1,5 @@
 package com.bookstore.service.impl;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -74,5 +72,9 @@ public class CartItemServiceImpl implements CartItemService{
 	public void removeCartItem(CartItem cartItem) {
 		bookToCartItemRepository.deleteByCartItem(cartItem);
 		cartItemRepository.delete(cartItem);
+	}
+	
+	public CartItem save(CartItem cartItem) {
+		return cartItemRepository.save(cartItem);
 	}
 }
