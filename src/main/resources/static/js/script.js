@@ -19,10 +19,10 @@ function checkPasswordMatch(){
 	}else{
 		if(password != confirmPassword){
 			$("#checkPasswordMatch").html("passwords do not match!");
-			$("#updateUserInfoButton").prop("disable",true);
+			$("#updateUserInfoButton").prop('disabled', true);
 		}else{
 			$("#checkPasswordMatch").html("passwords match!");
-			$("#updateUserInfoButton").prop("disable",false);
+			$("#updateUserInfoButton").prop('disabled', false);
 		}
 	}
 }

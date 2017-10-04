@@ -17,6 +17,8 @@ public interface UserService {
 	User findByUsername(String username);
 
 	User findByEmail(String email);
+	
+	User findById(Long id);
 
 	User createUser(User user, Set<UserRole> userRoles) throws Exception;
 
