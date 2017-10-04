@@ -293,7 +293,7 @@
 									<label for="billingAddress">* Street Address 1</label> <input
 										type="text" class="form-control billingAddress"
 										id="billingAddress" placeHolder="Street Address 1"
-										th:name="bllingAddressStreet1" required="required"
+										th:name="billingAddressStreet1" required="required"
 										th:value="${billingAddress.billingAddressStreet1}" />
 								</div>
 
@@ -387,7 +387,7 @@
 											</a>
 										</div>
 										<div class="col-xs-6">
-											<span class="center-block"> <a
+											<div style="margin-left:50px;"> <a
 												th:href="@{/bookDetail?id=}+${cartItem.book.id}"><h4
 														th:text="${cartItem.book.title}"></h4></a>
 												<p th:if="${cartItem.book.inStockNumber&gt;10}"
@@ -401,7 +401,7 @@
 												<p th:if="${cartItem.book.inStockNumber==0}"
 													style="color: darkred;">Out Of Stock</p> <a
 												th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}">delete</a>
-											</span>
+											</div>
 										</div>
 										<div class="col-xs-2">
 											<h5 style="color: #db3208; font-size: large;">

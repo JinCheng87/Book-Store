@@ -24,7 +24,7 @@ table, th, td {
 
 <body>
 	<p>
-		Dear <span th:text="${user.finstName}"></span>,
+		Dear <span th:text="${user.firstName}"></span>,
 	</p>
 	<p>Thank you for shopping frome our book store, we hope you like
 		our service!</p>
@@ -56,12 +56,12 @@ table, th, td {
 				th:text="${order.payment.cardNumber}"></span><br /> <span
 				th:text="${order.payment.expiryMonth}"></span><br /> <span
 				th:text="${order.payment.expiryYear}"></span><br /></td>
-			<td><span th:text="${order.shipingAddress.shippingAddressName}"></span><br />
+			<td><span th:text="${order.shippingAddress.shippingAddressName}"></span><br />
 				<span
-				th:text="${order.shipingAddress.shippingAddressStreet1}+' ' +${order.shippingAddress.shippingAddressStreet2}"></span><br />
-				<span th:text="${order.shipingAddress.shippingAddressCity}"></span><br />
-				<span th:text="${order.shipingAddress.shippingAddressState}"></span><br />
-				<span th:text="${order.shipingAddress.shippingAddressZipcode}"></span><br />
+				th:text="${order.shippingAddress.shippingAddressStreet1}+' ' +${order.shippingAddress.shippingAddressStreet2}"></span><br />
+				<span th:text="${order.shippingAddress.shippingAddressCity}"></span><br />
+				<span th:text="${order.shippingAddress.shippingAddressState}"></span><br />
+				<span th:text="${order.shippingAddress.shippingAddressZipcode}"></span><br />
 			</td>
 		</tr>
 
@@ -81,10 +81,10 @@ table, th, td {
 		</thead>
 		<tbody>
 			<tr th:each="cartItem : ${cartItemList}">
-				<td><span data-th-text="#{cartItem.book.title}"></span></td>
-				<td class="text-center" data-th-text="#{cartItem.book.ourPrice}"></td>
-				<td class="text-center" data-th-text="#{cartItem.book.qty}"></td>
-				<td class="text-right" data-th-text="#{cartItem.book.subTotal}"></td>
+				<td><span data-th-text="${cartItem.book.title}"></span></td>
+				<td class="text-center" data-th-text="${cartItem.book.ourPrice}"></td>
+				<td class="text-center" data-th-text="${cartItem.book.qty}"></td>
+				<td class="text-right" data-th-text="${cartItem.subtotal}"></td>
 			</tr>
 			<tr>
 				<td class="highrow"></td>
@@ -97,13 +97,13 @@ table, th, td {
 				<td class="emptyrow"></td>
 				<td class="emptyrow text-center"><strong>Tax</strong></td>
 				<td class="emptyrow text-right"
-					data-th-text="${#number.formatDecimal(order.orderTotal*0.06, 0, 2)"></td>
+					data-th-text="${#numbers.formatDecimal(order.orderTotal*0.06, 0, 2)}"></td>
 			</tr>
 			<tr>
 				<td class="emptyrow"><i class="fa-fa-barcode iconbig"></i></td>
 				<td class="emptyrow"></td>
 				<td class="emptyrow text-center"><strong>Total</strong></td>
-				<td class="emptyrow text-right" th:with="total=${order.orderTotal+orderTotal*0.06}" data-th-text="${#number.formatDecimal(total, 0, 2)}"></td>
+				<td class="emptyrow text-right" th:with="total=${order.orderTotal+order.orderTotal*0.06}" data-th-text="${#numbers.formatDecimal(total, 0, 2)}"></td>
 			</tr>
 
 		</tbody>

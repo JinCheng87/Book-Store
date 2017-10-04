@@ -164,7 +164,7 @@ public class CheckoutController {
 		ShoppingCart shoppingCart = userService.findByUsername(principal.getName()).getShoppingCart();
 		
 		List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
-		model.addAttribute("cartItemlist", cartItemList);
+		model.addAttribute("cartItemList", cartItemList);
 		
 		if(billingSameAsShipping.equals("true")) {
 			billingAddress.setBillingAddressName(shippingAddress.getShippingAddressName());
@@ -206,7 +206,7 @@ public class CheckoutController {
 			estimatedDeliveryDate = today.plusDays(3);
 		}
 		
-		model.addAttribute("estimatedDeliverydate", estimatedDeliveryDate);
+		model.addAttribute("estimatedDeliveryDate", estimatedDeliveryDate);
 		
 		return "orderSubmittedPage";
 	}
