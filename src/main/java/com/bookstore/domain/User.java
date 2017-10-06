@@ -42,6 +42,8 @@ public class User implements UserDetails{
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
 	private ShoppingCart shoppingCart;
 	
+	@OneToMany(mappedBy = "user")
+	private List<Order> orderList;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<UserShipping> userShippingList;
@@ -126,6 +128,15 @@ public class User implements UserDetails{
 	public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
 	}
+	
+	
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> authorites = new HashSet<>();

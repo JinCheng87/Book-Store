@@ -115,7 +115,7 @@
 
 					<!-- Order information -->
 					<div class="tab-pane fade" id="tab-2"
-						th:classappend="${classActiveOrder}? 'in active'">
+						th:classappend="${classActiveOrders}? 'in active'">
 						<div class="panel-group">
 							<div class="panel panel-default" style="border: none;">
 								<div class="panel-body"
@@ -232,26 +232,31 @@
 																		<td class="text-center"
 																			data-th-text="${cartItem.subtotal}"></td>
 																	</tr>
-																	
+
 																	<tr>
-				<td class="highrow"></td>
-				<td class="highrow"></td>
-				<td class="highrow text-center"><strong>Sub total</strong></td>
-				<td class="highrow text-right" data-th-text="${order.orderTotal}"></td>
-			</tr>
-			<tr>
-				<td class="emptyrow"></td>
-				<td class="emptyrow"></td>
-				<td class="emptyrow text-center"><strong>Tax</strong></td>
-				<td class="emptyrow text-right"
-					data-th-text="${#numbers.formatDecimal(order.orderTotal*0.06, 0, 2)}"></td>
-			</tr>
-			<tr>
-				<td class="emptyrow"><i class="fa-fa-barcode iconbig"></i></td>
-				<td class="emptyrow"></td>
-				<td class="emptyrow text-center"><strong>Total</strong></td>
-				<td class="emptyrow text-right" th:with="total=${order.orderTotal+order.orderTotal*0.06}" data-th-text="${#numbers.formatDecimal(total, 0, 2)}"></td>
-			</tr>
+																		<td class="highrow"></td>
+																		<td class="highrow"></td>
+																		<td class="highrow text-center"><strong>Sub
+																				total</strong></td>
+																		<td class="highrow text-right"
+																			data-th-text="${order.orderTotal}"></td>
+																	</tr>
+																	<tr>
+																		<td class="emptyrow"></td>
+																		<td class="emptyrow"></td>
+																		<td class="emptyrow text-center"><strong>Tax</strong></td>
+																		<td class="emptyrow text-right"
+																			data-th-text="${#numbers.formatDecimal(order.orderTotal*0.06, 0, 2)}"></td>
+																	</tr>
+																	<tr>
+																		<td class="emptyrow"><i
+																			class="fa-fa-barcode iconbig"></i></td>
+																		<td class="emptyrow"></td>
+																		<td class="emptyrow text-center"><strong>Total</strong></td>
+																		<td class="emptyrow text-right"
+																			th:with="total=${order.orderTotal+order.orderTotal*0.06}"
+																			data-th-text="${#numbers.formatDecimal(total, 0, 2)}"></td>
+																	</tr>
 																</tbody>
 															</table>
 														</div>
