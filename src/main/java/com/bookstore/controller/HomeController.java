@@ -491,7 +491,6 @@ public class HomeController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 
 		model.addAttribute("user", user);
-		model.addAttribute("orderList", user.getOrderList());
 
 		model.addAttribute("classActiveEdit", true);
 		return "myProfile";
@@ -532,6 +531,7 @@ public class HomeController {
 				currentUser.setPassword(passwordEncoder.encode(newPassword));
 			}else {
 				model.addAttribute("incorrectPassword", true);
+				model.addAttribute("classActiveEdit", true);
 				return "myProfile";
 			}
 		}
@@ -547,6 +547,8 @@ public class HomeController {
 		model.addAttribute("user", currentUser);
 		model.addAttribute("orderList", user.getOrderList());
 		model.addAttribute("classActiveEdit", true);
+		model.addAttribute("listOfShippingAddresses", true);
+		model.addAttribute("listOfCreditCards", true);
 		
 		UserDetails userDetails = userSecurityService.loadUserByUsername(currentUser.getUsername());
 
