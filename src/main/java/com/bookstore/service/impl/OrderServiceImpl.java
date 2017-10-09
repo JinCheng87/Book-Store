@@ -27,6 +27,7 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	CartItemService cartItemService;
 	
+	
 	public synchronized Order createOrder(ShoppingCart shoppingCart, ShippingAddress shippingAddress, BillingAddress billingAddress,
 			Payment payment, String shippingMethod, User user) {
 		Order order = new Order();
@@ -59,4 +60,6 @@ public class OrderServiceImpl implements OrderService{
 	public Order findOne(Long id) {
 		return orderRepository.findOne(id);
 	}
+	
+	
 }
