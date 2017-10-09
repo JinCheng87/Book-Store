@@ -64,8 +64,9 @@
 								</a>
 							</div>
 							<div class="col-xs-6">
-								<span class="center-block">
-								<a th:href="@{/bookDetail?id=}+${cartItem.book.id}"><h4 th:text="${cartItem.book.title}"></h4></a>
+								<span class="center-block"> <a
+									th:href="@{/bookDetail?id=}+${cartItem.book.id}"><h4
+											th:text="${cartItem.book.title}"></h4></a>
 									<p th:if="${cartItem.book.inStockNumber&gt;10}"
 										style="color: green;">In Stock</p>
 									<p
@@ -75,8 +76,8 @@
 										Stock
 									</p>
 									<p th:if="${cartItem.book.inStockNumber==0}"
-										style="color: darkred;">Out Of Stock</p>
-										<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}">delete</a>
+										style="color: darkred;">Out Of Stock</p> <a
+									th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}">delete</a>
 								</span>
 							</div>
 							<div class="col-xs-2">
@@ -112,6 +113,7 @@
 		</div>
 	</div>
 
+	<div th:replace="common/header :: footer" />
 	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
 </html>

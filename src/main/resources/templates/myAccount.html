@@ -85,7 +85,8 @@
 							<div class="panel panel-default" style="border: none;">
 								<div class="panel-body"
 									style="background-color: #ededed; margin-topp: 20px;">
-									<div th:if="${param.error != null}" style="color:red;">Incorrect user name or password</div>
+									<div th:if="${param.error != null}" style="color: red;">Incorrect
+										user name or password</div>
 									<form th:action="@{/login}" method="post">
 										<div class="form-group">
 											<label for="username">Username:</label> <input
@@ -115,9 +116,11 @@
 							<div class="panel panel-default" style="border: none;">
 								<div class="panel-body"
 									style="background-color: #ededed; margin-topp: 20px;">
-									<div th:if="${emailNotExists}" class="alert alert-danger"> Email doesn't exist.</div>
-									<div th:if="${forgetPasswordEmailSent}" class="alert alert-success">Email Sent</div>
-									<form th:action="@{/forgetPassword}" method="post" >
+									<div th:if="${emailNotExists}" class="alert alert-danger">
+										Email doesn't exist.</div>
+									<div th:if="${forgetPasswordEmailSent}"
+										class="alert alert-success">Email Sent</div>
+									<form th:action="@{/forgetPassword}" method="post">
 										<div class="form-group">
 											<label for="recoverEmail">Email:</label> <input
 												required="required" type="text" class="form-control"
@@ -138,6 +141,7 @@
 		</div>
 	</div>
 
+	<div th:replace="common/header :: footer" />
 	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
 </html>

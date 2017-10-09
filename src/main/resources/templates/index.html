@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="common/header :: common-header"/>
+<head th:replace="common/header :: common-header" />
 
 <body>
-	<div th:replace="common/header :: navbar"/>
+	<div th:replace="common/header :: navbar" />
 
-	<div class="container box">
-		<div class="row">
+	<div class="container">
+		<div class="row banner">
 
 			<!-- carousel -->
 			<div class="col-xs-8">
-				<div class="panel panel-default">
+				<div class="panel panel-default" style="margin-top: 20px;">
 					<div class="panel-heading">
 						<div id="carousel-example-generic" class="carousel slide"
 							data-ride="carousel">
@@ -227,7 +227,8 @@
 		</div>
 	</div>
 
-<div th:replace="common/header :: body-bottom-scripts"/>
+	<div th:replace="common/header :: footer" />
+	<div th:replace="common/header :: body-bottom-scripts" />
 
 </body>
 </html>
